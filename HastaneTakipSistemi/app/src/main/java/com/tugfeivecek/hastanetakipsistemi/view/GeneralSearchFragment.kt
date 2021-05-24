@@ -83,8 +83,6 @@ class GeneralSearchFragment : Fragment() {
                         requireContext(), R.layout.support_simple_spinner_dropdown_item, cityList
                     )
                 )
-
-
                 binding.etSelectCity.setOnItemClickListener { parent, view, position, id ->
 
                     ilId = cities[position].ilId.toString()
@@ -128,8 +126,6 @@ class GeneralSearchFragment : Fragment() {
                     for (data in hospitalListData) {
                         hospitalList.add(data.hospitalName!!)
                     }
-
-
                     binding.etSelectHospital.setAdapter(
                         ArrayAdapter(
                             requireContext(),
