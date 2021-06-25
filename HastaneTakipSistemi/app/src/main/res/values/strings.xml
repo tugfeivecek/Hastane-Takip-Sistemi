@@ -7,4 +7,10 @@
     <string name="choose_hospital">Hastane Seçiniz</string>
     <string name="tc_kimlik_no">Tc Kimlik No</string>
     <string name="login_password">Şifre</string>
+    <string name="hint_name">Ad-Soyad</string>
+    <string name="hint_mail">Mail adresi</string>
+    <string name="hint_sifretekrar">Şifre Tekrar</string>
+    <string name="login_username">Kullanıcı Adı</string>
+    <string name="company_title">Hastanedeki \nCihazlar</string>
+    <string name="other_company_title">Diğer Hastanelerdeki\n Cihazlar</string>
 </resources>

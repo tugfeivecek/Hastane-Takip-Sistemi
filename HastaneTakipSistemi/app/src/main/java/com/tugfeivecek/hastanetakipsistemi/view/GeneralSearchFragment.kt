@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.tugfeivecek.hastanetakipsistemi.R
 import com.tugfeivecek.hastanetakipsistemi.databinding.FragmentGeneralSearchBinding
-import com.tugfeivecek.hastanetakipsistemi.model.City
 import com.tugfeivecek.hastanetakipsistemi.viewmodel.CityViewModel
 import com.tugfeivecek.hastanetakipsistemi.viewmodel.DistrictViewModel
 import com.tugfeivecek.hastanetakipsistemi.viewmodel.HospitalListViewModel
@@ -83,7 +82,7 @@ class GeneralSearchFragment : Fragment() {
                         requireContext(), R.layout.support_simple_spinner_dropdown_item, cityList
                     )
                 )
-                binding.etSelectCity.setOnItemClickListener { parent, view, position, id ->
+                binding.etSelectCity.setOnItemClickListener { _, _, position, _ ->
 
                     ilId = cities[position].ilId.toString()
 

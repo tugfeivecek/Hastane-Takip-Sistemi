@@ -24,7 +24,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.tugfeivecek.hastanetakipsistemi.R
 import com.tugfeivecek.hastanetakipsistemi.databinding.FragmentMainBinding
 
-class MainFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener{
+class MainFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: FragmentMainBinding
     private lateinit var drawable: Drawable
     private var getLatitude = 0.0
@@ -48,7 +48,6 @@ class MainFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
 
         binding = FragmentMainBinding.inflate(layoutInflater)
 
@@ -82,7 +81,6 @@ class MainFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
         binding.viewPagerNear.adapter = adapter
 
 
-
         TabLayoutMediator(binding.tablayoutNear, binding.viewPagerNear) { tab, position ->
             // sirayla fragmentlara basligi yazicak
             tab.text = adapter.getPageTitle(position)
@@ -93,14 +91,14 @@ class MainFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
 
         binding.imageButtonHospital.setOnClickListener {
             val action = MainFragmentDirections.actionMainFragmentToHospitalSelectionFragment()
-            view?.let {
+            view.let {
                 Navigation.findNavController(it).navigate(action)
             }
         }
 
         binding.imageButtonEmergency.setOnClickListener {
             val action = MainFragmentDirections.actionMainFragmentToEmergencyOccupancyFragment()
-            view?.let {
+            view.let {
                 Navigation.findNavController(it).navigate(action)
             }
         }
@@ -183,6 +181,7 @@ class MainFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
         }
         return true
     }
+
     class MyViewPagerAdapter(manager: FragmentManager, lifecycle: Lifecycle) :
         FragmentStateAdapter(manager, lifecycle) {
         private val fragmentList: MutableList<Fragment> = ArrayList()

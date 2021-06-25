@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.tugfeivecek.hastanetakipsistemi.R
+import androidx.navigation.Navigation
 import com.tugfeivecek.hastanetakipsistemi.databinding.FragmentLoginBinding
 
 
@@ -22,6 +22,18 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentLoginBinding.inflate(layoutInflater)
+        binding.btnLogin.setOnClickListener {
+            val action = LoginFragmentDirections.actionLoginFragmentToProfileFragment()
+            view?.let {
+                Navigation.findNavController(it).navigate(action)
+            }
+        }
+        binding.tvRegister.setOnClickListener {
+            val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
+            view?.let {
+                Navigation.findNavController(it).navigate(action)
+            }
+        }
         return binding.root
     }
 }

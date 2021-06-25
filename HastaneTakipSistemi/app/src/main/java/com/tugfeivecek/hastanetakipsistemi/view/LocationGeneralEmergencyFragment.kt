@@ -5,11 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.tugfeivecek.hastanetakipsistemi.R
 import com.tugfeivecek.hastanetakipsistemi.databinding.FragmentLocationGeneralEmergencyBinding
 import com.tugfeivecek.hastanetakipsistemi.viewmodel.LocationGeneralEmergencyViewModel
 
@@ -17,7 +14,7 @@ import com.tugfeivecek.hastanetakipsistemi.viewmodel.LocationGeneralEmergencyVie
 class LocationGeneralEmergencyFragment(var hastaneId: String) : Fragment() {
     private lateinit var binding: FragmentLocationGeneralEmergencyBinding
     private lateinit var viewModelLocation: LocationGeneralEmergencyViewModel
-    private var yuzdelik=0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -52,7 +49,7 @@ class LocationGeneralEmergencyFragment(var hastaneId: String) : Fragment() {
                     binding.tvGreenWait.text = "Bekleyen: ${data.greenArea}"
                     binding.tvRedWait.text = "Bekleyen: ${data.redArea}"
                     binding.tvYellowWait.text = "Bekleyen: ${data.yellowArea}"
-                    val toplamBekleyen= data.greenArea!!+data.redArea!!+data.yellowArea!!
+
                 }
 
             }

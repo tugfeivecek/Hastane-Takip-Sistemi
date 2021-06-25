@@ -38,21 +38,21 @@ class HospitalSelectionFragment : Fragment() {
         binding.imageButtonGeneral.setOnClickListener {
             val action =
                 HospitalSelectionFragmentDirections.actionHospitalSelectionFragmentToGeneralSearchFragment()
-            view?.let {
+            view.let {
                 Navigation.findNavController(it).navigate(action)
             }
         }
         binding.imageButtonNearby.setOnClickListener {
             val action =
                 HospitalSelectionFragmentDirections.actionHospitalSelectionFragmentToNearbyHospitalFragment()
-            view?.let {
+            view.let {
                 Navigation.findNavController(it).navigate(action)
             }
         }
         binding.imageButtonSemptom.setOnClickListener {
             val action =
                 HospitalSelectionFragmentDirections.actionHospitalSelectionFragmentToSemptomDetailFragment()
-            view?.let {
+            view.let {
                 Navigation.findNavController(it).navigate(action)
             }
         }

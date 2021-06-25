@@ -88,7 +88,7 @@ class LocationFragment : Fragment() {
                         nameList
                     )
                 )
-                binding.autoCompleteTextView.setOnItemClickListener { parent, view, position, id ->
+                binding.autoCompleteTextView.setOnItemClickListener { _, view, position, _ ->
                     hospitalId = locations[position].hospitalId.toString()
                     val adapter = MyViewPagerAdapter(childFragmentManager, lifecycle)
                     adapter.addFragment(LocationGeneralEmergencyFragment(hospitalId), "Genel Acil")
