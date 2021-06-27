@@ -237,27 +237,6 @@
     </fragment>
 
 
-    <fragment
-        android:id="@+id/personalLoginFragment"
-        android:name="com.tugfeivecek.hastanetakipsistemi.view.personel.PersonalLoginFragment"
-        android:label="PersonalLoginFragment" >
-        <action
-            android:id="@+id/action_personalLoginFragment_to_personelDeviceSelectionFragment"
-            app:destination="@id/personelDeviceSelectionFragment" />
-    </fragment>
-    <activity
-        android:id="@+id/choiceActivity"
-        android:name="com.tugfeivecek.hastanetakipsistemi.view.ChoiceActivity"
-        android:label="activity_choice"
-        tools:layout="@layout/activity_choice" />
-    <fragment
-        android:id="@+id/personelDeviceSelectionFragment"
-        android:name="com.tugfeivecek.hastanetakipsistemi.view.personel.PersonelDeviceSelectionFragment"
-        android:label="PersonelDeviceSelectionFragment" >
-        <action
-            android:id="@+id/action_personelDeviceSelectionFragment_to_personalLoginFragment"
-            app:destination="@id/personalLoginFragment" />
-    </fragment>
 
 
 </navigation>
