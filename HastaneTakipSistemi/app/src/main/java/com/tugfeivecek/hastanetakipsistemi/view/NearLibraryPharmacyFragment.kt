@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -16,50 +15,49 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.maps.android.SphericalUtil
 import com.tugfeivecek.hastanetakipsistemi.R
-import com.tugfeivecek.hastanetakipsistemi.databinding.FragmentAroundHospitalBinding
-import com.tugfeivecek.hastanetakipsistemi.databinding.FragmentNearLibraryMapBinding
-import com.tugfeivecek.hastanetakipsistemi.viewmodel.NearHospitalViewModel
+import com.tugfeivecek.hastanetakipsistemi.databinding.FragmentNearLibraryPharmacyBinding
+import androidx.lifecycle.Observer
+import com.tugfeivecek.hastanetakipsistemi.viewmodel.NearPharmacyViewModel
 
 
-class AroundHospitalFragment : Fragment(), OnMapReadyCallback {
+class NearLibraryPharmacyFragment : Fragment(), OnMapReadyCallback {
 
     private lateinit var mapNear: GoogleMap
-    private lateinit var binding: FragmentAroundHospitalBinding
-    private lateinit var viewModelNear: NearHospitalViewModel
+    private lateinit var binding: FragmentNearLibraryPharmacyBinding
+    private lateinit var viewModelNear: NearPharmacyViewModel
     private lateinit var coordinatesNear: LatLng
     private lateinit var coordinatCurrent: LatLng
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentAroundHospitalBinding.inflate(layoutInflater)
+        binding = FragmentNearLibraryPharmacyBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModelNear = ViewModelProviders.of(this).get(NearHospitalViewModel::class.java)
+        viewModelNear = ViewModelProviders.of(this).get(NearPharmacyViewModel::class.java)
         // mutablelivbe datalara veri ekleniyo guncelleniyo
 
-        viewModelNear.refreshNearMapData()
+        viewModelNear.refreshNearMapPharmacyData()
         observeLocationData()
         createMapFragment()
-
 
     }
 
     private fun createMapFragment() {
         val mapFragment =
-            childFragmentManager.findFragmentById(R.id.aroundMapFragment) as SupportMapFragment
+            childFragmentManager.findFragmentById(R.id.nearMapFragmentPharmacy) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
 
@@ -84,7 +82,7 @@ class AroundHospitalFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun observeLocationData() {
-        viewModelNear.locationMap.observe(viewLifecycleOwner, Observer { mapData ->
+        viewModelNear.locationMapPharmacy.observe(viewLifecycleOwner, Observer { mapData ->
 
             for (data in mapData) {
 
@@ -98,14 +96,14 @@ class AroundHospitalFragment : Fragment(), OnMapReadyCallback {
                     <= 10.00
                 ) {
 
-                    var marker = MarkerOptions().position(coordinatesNear).title(data.hospitalName)
+                    var marker = MarkerOptions().position(coordinatesNear).title(data.pharmacyName)
                         .snippet(
                             " Mesafe: " + String.format(
                                 "%.2f",
                                 distance / 1000
                             ) + " km"
                         )
-                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mappin))
+                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mappharmacy))
                     mapNear.addMarker(marker)
                     mapNear.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinatesNear, 14f))
                 }

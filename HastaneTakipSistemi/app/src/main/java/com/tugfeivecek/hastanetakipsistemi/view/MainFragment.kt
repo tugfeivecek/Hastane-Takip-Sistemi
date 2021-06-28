@@ -2,12 +2,12 @@ package com.tugfeivecek.hastanetakipsistemi.view
 
 import android.Manifest
 import android.content.Context
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
 import android.location.LocationManager
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
@@ -17,6 +17,7 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.gms.location.*
 import com.google.android.material.navigation.NavigationView
@@ -27,20 +28,18 @@ import com.tugfeivecek.hastanetakipsistemi.databinding.FragmentMainBinding
 class MainFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: FragmentMainBinding
     private lateinit var drawable: Drawable
-    private var getLatitude = 0.0
-    private var getLongitude = 0.0
+
     private lateinit var locationManager: LocationManager
     private var checkLocation = 0
     private lateinit var fusedLocation: FusedLocationProviderClient
-    private lateinit var nearSharedPreferences: SharedPreferences
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         locationManager =
             requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        nearSharedPreferences =
-            requireContext().getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE)
+
 
     }
 
@@ -66,7 +65,7 @@ class MainFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
             }
         }
         toggle.syncState()
-        binding.navigationView.setNavigationItemSelectedListener(this)
+
         return binding.root
     }
 
@@ -74,9 +73,11 @@ class MainFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
         super.onViewCreated(view, savedInstanceState)
 
         binding.viewPagerNear.isSaveEnabled = false
+        binding.navigationView.setNavigationItemSelectedListener(this)
+
         val adapter = MyViewPagerAdapter(childFragmentManager, lifecycle)
         adapter.addFragment(NearLibraryMapFragment(), "En Yakın Hastane")
-        adapter.addFragment(NearLibraryTestFragment(), "En Yakın Eczane")
+        adapter.addFragment(NearLibraryPharmacyFragment(), "En Yakın Eczane")
         adapter.notifyDataSetChanged()
         binding.viewPagerNear.adapter = adapter
 
@@ -103,8 +104,14 @@ class MainFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
             }
         }
 
+        binding.imageButtonAnaliz.setOnClickListener {
+            val action = MainFragmentDirections.actionMainFragmentToAnalysisFragment()
+            view.let {
+                Navigation.findNavController(it).navigate(action)
+            }
+        }
 
-        val editor: SharedPreferences.Editor = nearSharedPreferences.edit()
+
         checkLocation = ContextCompat.checkSelfPermission(
             requireContext(),
             Manifest.permission.ACCESS_FINE_LOCATION,
@@ -115,18 +122,6 @@ class MainFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                 100
             )
-        } else {
-            fusedLocation = LocationServices.getFusedLocationProviderClient(requireContext())
-            fusedLocation.lastLocation.addOnSuccessListener { it ->
-                it?.let {
-                    getLatitude = it.latitude
-                    getLongitude = it.longitude
-                    editor.putString("latitude", getLatitude.toString())
-                    editor.putString("longitude", getLongitude.toString())
-                    editor.apply()
-                }
-
-            }
         }
     }
 
@@ -136,8 +131,9 @@ class MainFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.navFavorite -> {
-                val action = MainFragmentDirections.actionMainFragmentToFavoriteFragment()
+
+            R.id.navHospital -> {
+                val action = MainFragmentDirections.actionMainFragmentToSearchFragment()
                 view?.let {
                     Navigation.findNavController(it).navigate(action)
                 }
@@ -166,17 +162,21 @@ class MainFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
                     Navigation.findNavController(it).navigate(action)
                 }
             }
-            R.id.navSettings -> {
-                val action = MainFragmentDirections.actionMainFragmentToSettingsFragment()
-                view?.let {
-                    Navigation.findNavController(it).navigate(action)
-                }
-            }
+
             R.id.navMain -> {
                 val action = MainFragmentDirections.actionMainFragmentSelf()
                 view?.let {
                     Navigation.findNavController(it).navigate(action)
                 }
+            }
+            R.id.navCikis -> {
+                val sp = requireActivity().getSharedPreferences("GirisBilgi", Context.MODE_PRIVATE)
+                val editor = sp.edit()
+                editor.remove("girisDurum")
+                editor.remove("adsoyad")
+                editor.apply()
+                Toast.makeText(context, "Çıkış işlemi başarılı", Toast.LENGTH_LONG).show()
+                findNavController().navigate(R.id.mainFragment)
             }
         }
         return true

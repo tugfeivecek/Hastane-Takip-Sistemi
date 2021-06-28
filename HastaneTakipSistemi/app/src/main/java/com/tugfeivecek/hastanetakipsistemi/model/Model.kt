@@ -1,5 +1,6 @@
 package com.tugfeivecek.hastanetakipsistemi.model
 
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 
@@ -8,20 +9,16 @@ data class Hospital(
     var hospitalId: Int?,
     @SerializedName("hospitalName")
     var hospitalName: String?,
-    @SerializedName("campusName")
-    var campusName: String?,
     @SerializedName("hospitalAddress")
     var hospitalAddress: String?,
-    @SerializedName("campusAddress")
-    var campusAddress: String?,
-    @SerializedName("phone")
-    var phone: String?,
-    @SerializedName("mail")
-    var mail: String?,
     @SerializedName("capacity")
     var capacity: Int?,
     @SerializedName("patientCount")
     var patientCount: Int?,
+    @SerializedName("hasGeneral")
+    var hasGeneral: Int?,
+    @SerializedName("hasChild")
+    var hasChild: Int?,
     @SerializedName("latitude")
     var latitude: Double?,
     @SerializedName("longitude")
@@ -106,11 +103,6 @@ data class Notice(
     var date: String,
 )
 
-data class EmergencyOccuracy(
-    var hospitalName: String,
-    var wait: String,
-    var capacity: String,
-)
 
 data class EmergecnyFull(
     @SerializedName("hospitalName")
@@ -186,4 +178,216 @@ data class SearchResponse(
     var successAranan: Int
 )
 
+data class Personal(
+    @SerializedName("userName")
+    @Expose
+    var userName: String? = null,
+    @SerializedName("name")
+    @Expose
+    var name: String? = null,
+    @SerializedName("Hospital_hospitalId")
+    @Expose
+    var hospitalId: String?,
+)
 
+data class PersonalResponse(
+    @SerializedName("user")
+    @Expose
+    var personal: Personal? = null,
+    @SerializedName("error")
+    @Expose
+    var error: Boolean? = false,
+    @SerializedName("error_message")
+    @Expose
+    var error_message: String? = null,
+)
+
+data class PersonalRequest(
+    @SerializedName("userName")
+    @Expose
+    var userName: String? = null,
+    @SerializedName("password")
+    @Expose
+    var password: String? = null
+)
+
+
+data class User(
+    @SerializedName("identityNumber")
+    @Expose
+    var identityNumber: String? = null,
+    @SerializedName("userName")
+    @Expose
+    var userName: String? = null,
+)
+
+data class UserResponse(
+    @SerializedName("user")
+    @Expose
+    var user: User? = null,
+    @SerializedName("error")
+    @Expose
+    var error: Boolean? = false,
+    @SerializedName("error_message")
+    @Expose
+    var error_message: String? = null,
+)
+
+
+data class UserRequest(
+    @SerializedName("identityNumber")
+    @Expose
+    var identityNumber: String? = null,
+    @SerializedName("password")
+    @Expose
+    var password: String? = null
+)
+
+data class RegisterUser(
+    @SerializedName("identityNumber")
+    @Expose
+    var identityNumber: String? = null,
+    @SerializedName("userName")
+    @Expose
+    var userName: String? = null,
+    @SerializedName("date")
+    @Expose
+    var date: String? = null,
+)
+
+data class RegisterResponse(
+    @SerializedName("user")
+    @Expose
+    var user: RegisterUser? = null,
+    @SerializedName("uid")
+    @Expose
+    var uid: String? = null,
+    @SerializedName("error")
+    @Expose
+    var error: Boolean? = false,
+    @SerializedName("error_message")
+    @Expose
+    var error_message: String? = null,
+)
+
+data class RegisterRequest(
+    @SerializedName("identityNumber")
+    @Expose
+    var identityNumber: String? = null,
+    @SerializedName("name")
+    @Expose
+    var name: String? = null,
+    @SerializedName("userName")
+    @Expose
+    var userName: String? = null,
+    @SerializedName("password")
+    @Expose
+    var password: String? = null,
+    @SerializedName("mail")
+    @Expose
+    var mail: String? = null,
+)
+
+
+data class Pharmacy(
+    @SerializedName("idPharmacy")
+    @Expose
+    var idPharmacy: String? = null,
+    @SerializedName("pharmacyName")
+    @Expose
+    var pharmacyName: String? = null,
+    @SerializedName("pharmacyAddress")
+    @Expose
+    var pharmacyAddress: String? = null,
+    @SerializedName("latitude")
+    @Expose
+    var latitude: Double?,
+    @SerializedName("longitude")
+    @Expose
+    var longitude: Double?,
+)
+
+data class PharmacyResponse(
+    @SerializedName("eczaneler")
+    var allPharmacy: List<Pharmacy>?,
+    @SerializedName("success")
+    var success: Int
+)
+
+data class EmergencyStatu(
+    @SerializedName("hospitalId")
+    @Expose
+    var hospitalId: String? = null,
+    @SerializedName("hospitalName")
+    @Expose
+    var hospitalName: String? = null,
+    @SerializedName("capacity")
+    @Expose
+    var capacity: String? = null,
+    @SerializedName("waiting")
+    @Expose
+    var waiting: Int?,
+)
+
+data class EmergencyResponse(
+    @SerializedName("hastaneAcil")
+    var allEmergencyStatus: List<EmergencyStatu>?,
+    @SerializedName("success")
+    var success: Int
+)
+
+data class Department(
+    @SerializedName("departmentId")
+    @Expose
+    var departmentId: String? = null,
+    @SerializedName("DepartmentName")
+    @Expose
+    var DepartmentName: String? = null,
+    @SerializedName("Hospital_hospitalId")
+    @Expose
+    var Hospital_hospitalId: String? = null,
+    @SerializedName("HospitalName")
+    @Expose
+    var HospitalName: String? = null,
+)
+
+data class DepartmentResponse(
+    @SerializedName("bolumler")
+    var allDepartments: List<Department>?,
+    @SerializedName("success")
+    var success: Int
+)
+
+data class Device(
+    @SerializedName("deviceId")
+    @Expose
+    var deviceId: String? = null,
+    @SerializedName("name")
+    @Expose
+    var name: String? = null,
+    @SerializedName("fixtureNo")
+    @Expose
+    var fixtureNo: String? = null,
+    @SerializedName("description")
+    @Expose
+    var description: String? = null,
+    @SerializedName("brands")
+    @Expose
+    var brands: String? = null,
+    @SerializedName("imageUrl")
+    @Expose
+    var imageUrl: String? = null,
+    @SerializedName("activeCount")
+    @Expose
+    var activeCount: String? = null,
+    @SerializedName("stokCount")
+    @Expose
+    var stokCount: String? = null,
+)
+
+data class DeviceResponse(
+    @SerializedName("cihazlar")
+    var allDevices: List<Device>?,
+    @SerializedName("success")
+    var success: Int
+)

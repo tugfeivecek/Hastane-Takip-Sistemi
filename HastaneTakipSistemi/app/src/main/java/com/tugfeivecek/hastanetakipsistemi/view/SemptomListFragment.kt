@@ -54,7 +54,7 @@ class SemptomListFragment : Fragment() {
         arguments?.let {
             typeId = SemptomListFragmentArgs.fromBundle(it).typeId
         }
-        Toast.makeText(context, "GELEN TYPE ID: $typeId", Toast.LENGTH_SHORT).show()
+
         viewModelSemptomList.refreshSemptomListData(typeId)
         binding.rvSemptomList.layoutManager = LinearLayoutManager(context)
         binding.rvSemptomList.adapter = semptomListAdapter

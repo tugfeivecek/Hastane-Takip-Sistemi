@@ -29,12 +29,8 @@
         <action
             android:id="@+id/action_mainFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_favoriteFragment"
-            app:destination="@id/favoriteFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+
+
         <action
             android:id="@+id/action_mainFragment_self"
             app:destination="@id/mainFragment" />
@@ -44,6 +40,9 @@
         <action
             android:id="@+id/action_mainFragment_to_emergencyOccupancyFragment"
             app:destination="@id/emergencyOccupancyFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_analysisFragment"
+            app:destination="@id/analysisFragment" />
     </fragment>
     <fragment
         android:id="@+id/emergencyFragment"
@@ -179,24 +178,8 @@
             android:id="@+id/action_aboutFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/favoriteFragment"
-        android:name="com.tugfeivecek.hastanetakipsistemi.view.FavoriteFragment"
-        android:label="fragment_favorite"
-        tools:layout="@layout/fragment_favorite">
-        <action
-            android:id="@+id/action_favoriteFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.tugfeivecek.hastanetakipsistemi.view.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings">
-        <action
-            android:id="@+id/action_settingsFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-    </fragment>
+
+
     <fragment
         android:id="@+id/aroundHospitalFragment"
         android:name="com.tugfeivecek.hastanetakipsistemi.view.AroundHospitalFragment"
@@ -236,7 +219,31 @@
             app:destination="@id/loginFragment" />
     </fragment>
 
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.tugfeivecek.hastanetakipsistemi.view.UserFragment"
+        android:label="UserFragment">
 
+        <action
+            android:id="@+id/action_global_to_user_fragment"
+            app:destination="@id/userFragment" />
 
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_to_main_fragment"
+        app:destination="@id/mainFragment" />
+
+    <action
+        android:id="@+id/action_global_to_register"
+        app:destination="@id/registerFragment" />
+    <fragment
+        android:id="@+id/analysisFragment"
+        android:name="com.tugfeivecek.hastanetakipsistemi.view.AnalysisFragment"
+        android:label="AnalysisFragment" >
+        <action
+            android:id="@+id/action_analysisFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 
 </navigation>

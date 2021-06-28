@@ -5,20 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tugfeivecek.hastanetakipsistemi.R
 import com.tugfeivecek.hastanetakipsistemi.adapter.EmergencyOccuracyAdapter
-import com.tugfeivecek.hastanetakipsistemi.adapter.RecordsAdapter
 import com.tugfeivecek.hastanetakipsistemi.databinding.FragmentEmergencyOccupancyBinding
-import com.tugfeivecek.hastanetakipsistemi.databinding.FragmentRecordsBinding
-import com.tugfeivecek.hastanetakipsistemi.model.EmergencyOccuracy
-import com.tugfeivecek.hastanetakipsistemi.model.Records
-
+import com.tugfeivecek.hastanetakipsistemi.viewmodel.EmergencyStatuViewModel
 
 class EmergencyOccupancyFragment : Fragment() {
     private lateinit var binding: FragmentEmergencyOccupancyBinding
-    private lateinit var adapter: EmergencyOccuracyAdapter
-    private lateinit var emergencyOccuracy: ArrayList<EmergencyOccuracy>
+    private var adapter = EmergencyOccuracyAdapter(arrayListOf())
+    private lateinit var viewModelEmergencyStatu: EmergencyStatuViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,29 +38,25 @@ class EmergencyOccupancyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModelEmergencyStatu =
+            ViewModelProviders.of(this).get(EmergencyStatuViewModel::class.java)
+        viewModelEmergencyStatu.refreshEmergencyStatu()
         binding.rvEmergencyOccupancy.setHasFixedSize(true)
         binding.rvEmergencyOccupancy.layoutManager = LinearLayoutManager(context)
-
-        val u1 = EmergencyOccuracy(
-            "Bezmialem Vakıf Üniversitesi Tıp Fakültesi Hastanesi",
-            "56",
-            "120",
-        )
-        val u2 = EmergencyOccuracy("Medipol Üniversitesi Hastanesi", "35", "70")
-        val u3 = EmergencyOccuracy(
-            "Sağlık Bilimleri Üniversitesi Sarıyer Hamidiye Etfal Eğitim ve Araştırma Hastanesi",
-            "12",
-            "80",
-        )
-
-
-        //araylist olusturma
-        emergencyOccuracy = ArrayList<EmergencyOccuracy>()
-        emergencyOccuracy.add(u1)
-        emergencyOccuracy.add(u2)
-        emergencyOccuracy.add(u3)
-        adapter = EmergencyOccuracyAdapter(emergencyOccuracy)
         binding.rvEmergencyOccupancy.adapter = adapter
+        observeEmergencyStatu()
 
+    }
+
+    private fun observeEmergencyStatu() {
+        viewModelEmergencyStatu.emergencyStatuList.observe(
+            viewLifecycleOwner,
+            Observer { emergency ->
+
+                emergency.let {
+                    adapter.updateEmergencyOccupancy(emergency)
+                }
+            })
     }
 }

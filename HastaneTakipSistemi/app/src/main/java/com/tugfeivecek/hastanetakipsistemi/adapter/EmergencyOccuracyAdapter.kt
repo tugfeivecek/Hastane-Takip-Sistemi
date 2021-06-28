@@ -3,12 +3,13 @@ package com.tugfeivecek.hastanetakipsistemi.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.tugfeivecek.hastanetakipsistemi.R
-import com.tugfeivecek.hastanetakipsistemi.model.EmergencyOccuracy
+import com.tugfeivecek.hastanetakipsistemi.model.EmergencyStatu
 
-class EmergencyOccuracyAdapter(val occuracyList: ArrayList<EmergencyOccuracy>) :
+class EmergencyOccuracyAdapter(val occuracyList: ArrayList<EmergencyStatu>) :
     RecyclerView.Adapter<EmergencyOccuracyAdapter.EmergencyOccuracyViewHolder>() {
 
 
@@ -16,12 +17,16 @@ class EmergencyOccuracyAdapter(val occuracyList: ArrayList<EmergencyOccuracy>) :
         var tvHospitalName: TextView
         var tvCapacity: TextView
         var tvWait: TextView
+        var pbEmergency: ProgressBar
+        var pbOccuracyResult: TextView
 
 
         init {
             tvHospitalName = view.findViewById(R.id.tv_occuracy_name)
             tvCapacity = view.findViewById(R.id.tv_occuracy_capacity)
             tvWait = view.findViewById(R.id.tv_occuracy_wait)
+            pbEmergency = view.findViewById(R.id.pb_occuracy)
+            pbOccuracyResult = view.findViewById(R.id.pb_occuracy_result)
         }
     }
 
@@ -38,7 +43,11 @@ class EmergencyOccuracyAdapter(val occuracyList: ArrayList<EmergencyOccuracy>) :
 
         holder.tvHospitalName.text = occuracy.hospitalName
         holder.tvCapacity.text = "Kapasite:" + occuracy.capacity
-        holder.tvWait.text = "Bekleyen: " + occuracy.wait
+        holder.tvWait.text = "Bekleyen: " + occuracy.waiting
+        holder.pbEmergency.progress =
+            ((occuracy.capacity?.toDouble()!!) - (occuracy.waiting!!)).toInt()
+        holder.pbOccuracyResult.text =
+            "%" + ((occuracy.capacity?.toInt()!! - occuracy.waiting!!)).toString()
 
     }
 
@@ -47,9 +56,9 @@ class EmergencyOccuracyAdapter(val occuracyList: ArrayList<EmergencyOccuracy>) :
     }
 
     //yeni listeyi ekleme
-    fun updateNotice(newOccuracyList: List<EmergencyOccuracy>) {
+    fun updateEmergencyOccupancy(emergencyOccupancy: List<EmergencyStatu>) {
         occuracyList.clear()
-        occuracyList.addAll(newOccuracyList)
+        occuracyList.addAll(emergencyOccupancy)
         //adapteru yenileme metodu
         notifyDataSetChanged()
     }

@@ -32,12 +32,11 @@
 
         <TextView
             android:id="@+id/tvCapacity"
-            android:layout_width="@dimen/_100sdp"
+            android:layout_width="@dimen/_140sdp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="33dp"
             android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
             app:layout_constraintTop_toBottomOf="@+id/tvName" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

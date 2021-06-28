@@ -22,12 +22,25 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProfileBinding.inflate(layoutInflater)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         binding.tvGirisYap.setOnClickListener {
             val action = ProfileFragmentDirections.actionProfileFragmentToLoginFragment()
-            view?.let {
+            view.let {
                 Navigation.findNavController(it).navigate(action)
             }
         }
-        return binding.root
+
+        binding.tvKayitOl.setOnClickListener {
+            val action = ProfileFragmentDirections.actionGlobalToRegister()
+            view.let {
+                Navigation.findNavController(it).navigate(action)
+            }
+        }
     }
 }

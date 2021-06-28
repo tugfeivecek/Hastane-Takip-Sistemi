@@ -1,36 +1,37 @@
 package com.tugfeivecek.hastanetakipsistemi.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tugfeivecek.hastanetakipsistemi.model.Hospital
 import com.tugfeivecek.hastanetakipsistemi.model.HospitalResponse
+import com.tugfeivecek.hastanetakipsistemi.model.Pharmacy
+import com.tugfeivecek.hastanetakipsistemi.model.PharmacyResponse
 import com.tugfeivecek.hastanetakipsistemi.service.HospitalAPIService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
-class NearHospitalViewModel : ViewModel() {
+class NearPharmacyViewModel : ViewModel() {
 
     private val nearMapApiService = HospitalAPIService()
     private val nearMapDisposable = CompositeDisposable()
-    val locationMap = MutableLiveData<List<Hospital>>()
+    val locationMapPharmacy = MutableLiveData<List<Pharmacy>>()
 
-    fun refreshNearMapData() {
+    fun refreshNearMapPharmacyData() {
         getNearMapDataFromAPI()
     }
 
     private fun getNearMapDataFromAPI() {
 
         nearMapDisposable.add(
-            nearMapApiService.getHospitalLocationData()
+            nearMapApiService.getPharmacyLocationData()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<HospitalResponse>() {
+                .subscribeWith(object : DisposableSingleObserver<PharmacyResponse>() {
                     //bir hata olursa ne yapıcaz hata olmazsa ne yapicaz
-                    override fun onSuccess(t: HospitalResponse) {
-                        locationMap.value = t.allHospital
+                    override fun onSuccess(t: PharmacyResponse) {
+                        locationMapPharmacy.value = t.allPharmacy
 
                     }
 

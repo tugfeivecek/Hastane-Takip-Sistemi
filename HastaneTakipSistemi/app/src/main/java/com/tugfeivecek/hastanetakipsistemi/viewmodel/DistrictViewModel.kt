@@ -30,7 +30,7 @@ class DistrictViewModel : ViewModel() {
                 .subscribeWith(object : DisposableSingleObserver<DistrictResponse>() {
                     override fun onSuccess(t: DistrictResponse) {
                         districtData.value = t.allDistrict
-                        Log.e("Data", "Başarılı")
+                        Log.e("t.successDistrict", t.successDistrict.toString())
                     }
 
                     override fun onError(e: Throwable) {

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_250sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/personallistcard"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:id="@+id/tv_medikal_device"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/ralewaymedium"
+                android:text="EKG Cihazı"
+                android:textColor="@color/turkuaz"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/image_device"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_medikal_device"
+                tools:srcCompat="@drawable/emergencyellow" />
+
+            <TextView
+                android:id="@+id/tv_aktif"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/ralewaymedium"
+                android:text="Aktif:"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintStart_toEndOf="@+id/image_device"
+                app:layout_constraintTop_toBottomOf="@+id/tv_medikal_device" />
+
+            <TextView
+                android:id="@+id/tv_depoda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:fontFamily="@font/ralewaymedium"
+                android:text="Depoda:"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintStart_toStartOf="@+id/tv_aktif"
+                app:layout_constraintTop_toBottomOf="@+id/tv_aktif" />
+
+            <TextView
+                android:id="@+id/tv_active_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="@font/ralewaymedium"
+                android:text="TextView"
+                android:textColor="@color/turkuaz"
+                app:layout_constraintStart_toEndOf="@id/tv_aktif"
+                app:layout_constraintTop_toTopOf="@+id/tv_aktif" />
+
+            <TextView
+                android:id="@+id/tv_store_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="21dp"
+                android:fontFamily="@font/ralewaymedium"
+                android:text="TextView"
+                android:textColor="@color/turkuaz"
+                app:layout_constraintStart_toEndOf="@id/tv_depoda"
+                app:layout_constraintTop_toBottomOf="@+id/tv_aktif" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

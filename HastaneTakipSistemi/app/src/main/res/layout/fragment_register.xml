@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
     android:background="@drawable/profile_bg"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/_14sdp"
-        android:layout_height="@dimen/_30sdp">
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_14sdp">
 
         <TextView
             android:id="@+id/tvTitle"
@@ -37,32 +37,34 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/_20ssp"
         android:layout_marginTop="@dimen/_8sdp"
         android:fontFamily="@font/ralewaymedium"
+        android:text="Kayıt Ol,"
         android:textColor="@color/turkuaz"
-        android:text="Kayıt Ol,"/>
+        android:textSize="@dimen/_20ssp" />
+
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="@dimen/_8sdp"
         android:fontFamily="@font/ralewayregular"
-        android:textColor="@color/yazigri"
-        android:layout_marginLeft="16dp"
         android:text="Bilgilerinizi doldurarak kayıt olabilirsiniz."
+        android:textColor="@color/yazigri"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tl_login_tc"
+        android:id="@+id/tl_register_tc"
         style="@style/MyTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -73,11 +75,11 @@
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tl_login_name"
+        app:layout_constraintTop_toBottomOf="@+id/tl_register_name"
         app:startIconDrawable="@drawable/profilusericon">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_login_tc"
+            android:id="@+id/et_register_tc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/ralewayregular"
@@ -85,8 +87,9 @@
             android:textColor="@color/black"
             android:textCursorDrawable="@null" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tl_login_name"
+        android:id="@+id/tl_register_name"
         style="@style/MyTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -97,11 +100,11 @@
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tl_login_name"
+        app:layout_constraintTop_toBottomOf="@+id/tl_register_name"
         app:startIconDrawable="@drawable/profilusericon">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_login_name"
+            android:id="@+id/et_register_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/ralewayregular"
@@ -111,7 +114,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tl_login_eposta"
+        android:id="@+id/tl_register_eposta"
         style="@style/MyTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -126,7 +129,7 @@
         app:startIconDrawable="@drawable/profilusericon">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_login_eposta"
+            android:id="@+id/et_register_eposta"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/ralewayregular"
@@ -136,7 +139,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tl_login_sifre"
+        android:id="@+id/tl_register_sifre"
         style="@style/MyTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -151,7 +154,7 @@
         app:startIconDrawable="@drawable/password">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_login_sifre"
+            android:id="@+id/et_register_sifre"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/ralewayregular"
@@ -176,7 +179,7 @@
         app:startIconDrawable="@drawable/password">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_login_sifreagain"
+            android:id="@+id/et_register_sifreagain"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/ralewayregular"
@@ -184,37 +187,38 @@
             android:textColor="@color/black"
             android:textCursorDrawable="@null" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <TextView
+        android:id="@+id/tv_save_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Kayıt Ol"
         android:layout_marginTop="@dimen/_12sdp"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:textSize="@dimen/_16sdp"
+        android:background="@drawable/girisyap"
         android:fontFamily="@font/ralewayregular"
-        android:background="@drawable/girisyap"/>
+        android:gravity="center"
+        android:text="Kayıt Ol"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_16sdp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:fontFamily="@font/ralewaymedium"
+        android:gravity="center"
         android:text="Zaten bir hesabın var mı?"
         android:textColor="@color/bottom_gri"
-        android:fontFamily="@font/ralewaymedium"
-        android:gravity="center"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:textSize="@dimen/_10ssp"/>
+        android:textSize="@dimen/_10ssp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Giriş Yap"
-        android:textColor="@color/turkuaz"
+        android:layout_marginTop="@dimen/_12sdp"
         android:fontFamily="@font/ralewaymedium"
         android:gravity="center"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:textSize="@dimen/_10ssp"/>
-
+        android:text="Giriş Yap"
+        android:textColor="@color/turkuaz"
+        android:textSize="@dimen/_10ssp" />
 
 
 </LinearLayout>

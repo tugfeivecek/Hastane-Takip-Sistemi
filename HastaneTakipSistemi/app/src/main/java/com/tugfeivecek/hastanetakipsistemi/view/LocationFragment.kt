@@ -22,7 +22,6 @@ class LocationFragment : Fragment() {
     private lateinit var viewModelLocation: LocationViewModel
     private lateinit var binding: FragmentLocationBinding
     private var nameList = ArrayList<String>()
-    private val listEmergency = ArrayList<Fragment>()
     private var hospitalId = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -91,22 +90,66 @@ class LocationFragment : Fragment() {
                 binding.autoCompleteTextView.setOnItemClickListener { _, view, position, _ ->
                     hospitalId = locations[position].hospitalId.toString()
                     val adapter = MyViewPagerAdapter(childFragmentManager, lifecycle)
-                    adapter.addFragment(LocationGeneralEmergencyFragment(hospitalId), "Genel Acil")
-                    adapter.addFragment(LocationGeneralEmergencyFragment(hospitalId), "Çocuk Acil")
+                    if (locations[position].hasChild == 0 && locations[position].hasGeneral == 0) {
+                        adapter.addFragment(
+                            LocationGeneralEmergencyFragment(hospitalId),
+                            "Genel Acil"
+                        )
+                        adapter.addFragment(
+                            LocationGeneralEmergencyFragment(hospitalId),
+                            "Çocuk Acil"
+                        )
 
-                    adapter.notifyDataSetChanged()
-                    binding.viewPagerHospital.adapter = adapter
-                    observeLocationData()
+                        adapter.notifyDataSetChanged()
+                        binding.viewPagerHospital.adapter = adapter
 
 
-                    TabLayoutMediator(
-                        binding.tablayoutHospital,
-                        binding.viewPagerHospital
-                    ) { tab, position ->
-                        // sirayla fragmentlara basligi yazicak
-                        tab.text = adapter.getPageTitle(position)
-                        binding.viewPagerHospital.setCurrentItem(tab.position, true)
-                    }.attach()
+                        TabLayoutMediator(
+                            binding.tablayoutHospital,
+                            binding.viewPagerHospital
+                        ) { tab, position ->
+                            // sirayla fragmentlara basligi yazicak
+                            tab.text = adapter.getPageTitle(position)
+                            binding.viewPagerHospital.setCurrentItem(tab.position, true)
+                        }.attach()
+                    } else if (locations[position].hasChild == 0 && locations[position].hasGeneral == 1) {
+                        adapter.addFragment(
+                            LocationGeneralEmergencyFragment(hospitalId),
+                            "Çocuk Acil"
+                        )
+
+                        adapter.notifyDataSetChanged()
+                        binding.viewPagerHospital.adapter = adapter
+
+
+                        TabLayoutMediator(
+                            binding.tablayoutHospital,
+                            binding.viewPagerHospital
+                        ) { tab, position ->
+                            // sirayla fragmentlara basligi yazicak
+                            tab.text = adapter.getPageTitle(position)
+                            binding.viewPagerHospital.setCurrentItem(tab.position, true)
+                        }.attach()
+                    } else if (locations[position].hasChild == 1 && locations[position].hasGeneral == 0) {
+                        adapter.addFragment(
+                            LocationGeneralEmergencyFragment(hospitalId),
+                            "Genel Acil"
+                        )
+
+                        adapter.notifyDataSetChanged()
+                        binding.viewPagerHospital.adapter = adapter
+
+                        TabLayoutMediator(
+                            binding.tablayoutHospital,
+                            binding.viewPagerHospital
+                        ) { tab, position ->
+                            // sirayla fragmentlara basligi yazicak
+                            tab.text = adapter.getPageTitle(position)
+                            binding.viewPagerHospital.setCurrentItem(tab.position, true)
+                        }.attach()
+                    }
+
+
                 }
             }
         })

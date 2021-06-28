@@ -37,7 +37,6 @@ class LocationGeneralEmergencyFragment(var hastaneId: String) : Fragment() {
             ViewModelProviders.of(this).get(LocationGeneralEmergencyViewModel::class.java)
         viewModelLocation.refreshgeneralEmergencyData(hastaneId)
 
-
         observeLocationData()
     }
 
@@ -50,6 +49,38 @@ class LocationGeneralEmergencyFragment(var hastaneId: String) : Fragment() {
                     binding.tvRedWait.text = "Bekleyen: ${data.redArea}"
                     binding.tvYellowWait.text = "Bekleyen: ${data.yellowArea}"
 
+                    binding.pbRedResult.text =
+                        "%" + String.format(
+                            "%.1f",
+                            (((data.redArea)!! * 100.0) / ((data.redArea)!! + (data.yellowArea!!) + data.greenArea!!))
+                        )
+
+                    binding.pbYellowResult.text =
+
+                        "%" + String.format(
+                            "%.1f",
+                            (((data.yellowArea)!! * 100.0) / ((data.redArea)!! + (data.yellowArea!!) + data.greenArea!!))
+                        )
+
+
+                    binding.pbGreenResult.text =
+                        "%" + String.format(
+                            "%.1f",
+                            (((data.greenArea)!! * 100.0) / ((data.redArea)!! + (data.yellowArea!!) + data.greenArea!!))
+                        )
+
+                    binding.pbRed.progress =
+                        ((data.redArea)!! * 100) / ((data.redArea)!! + (data.yellowArea!!) + data.greenArea!!)
+
+                    binding.pbYellow.progress =
+                        ((data.yellowArea)!! * 100) / ((data.redArea)!! + (data.yellowArea!!) + data.greenArea!!)
+
+                    binding.pbGreen.progress =
+                        ((data.greenArea)!! * 100) / ((data.redArea)!! + (data.yellowArea!!) + data.greenArea!!)
+                    // red -> 21
+                    // yellow -> 50
+                    // green -> 80
+                    // (21) / (21 + 50 + 80) = 21 / 151
                 }
 
             }

@@ -36,7 +36,7 @@
 
         <TextView
             android:id="@+id/tv_occuracy_wait"
-            android:layout_width="@dimen/_80sdp"
+            android:layout_width="@dimen/_95sdp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_6sdp"
             android:layout_marginTop="@dimen/_24sdp"

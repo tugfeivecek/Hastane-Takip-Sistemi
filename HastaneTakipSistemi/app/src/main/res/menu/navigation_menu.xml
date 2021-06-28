@@ -19,17 +19,10 @@
         android:icon="@drawable/drawerhospital"
         android:title="Çevremdeki Hastaneler" />
     <item
-        android:id="@+id/navFavorite"
-        android:icon="@drawable/drawerfav"
-        android:title="Favorilerim" />
-    <item
         android:id="@+id/navNotice"
         android:icon="@drawable/drawernoti"
         android:title="Duyurular" />
-    <item
-        android:id="@+id/navSettings"
-        android:title="Ayarlar"
-        android:icon="@drawable/drawersettings"/>
+
 
     <item
         android:id="@+id/navAbout"

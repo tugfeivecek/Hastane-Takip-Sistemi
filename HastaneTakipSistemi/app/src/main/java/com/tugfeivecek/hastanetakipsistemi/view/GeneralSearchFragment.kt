@@ -46,14 +46,20 @@ class GeneralSearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         viewModelCity = ViewModelProviders.of(this).get(CityViewModel::class.java)
         viewModelCity.refreshCityData()
+        observeCityData()
 
         viewModelDistrict = ViewModelProviders.of(this).get(DistrictViewModel::class.java)
-        viewModelDistrict.refreshDistrictData(ilId)
+        viewModelDistrict.refreshDistrictData("34")
+        observeDistrictData()
 
         viewModelHospitalList = ViewModelProviders.of(this).get(HospitalListViewModel::class.java)
         viewModelHospitalList.refreshHospitalListData("20")
+        observeHospitalListData()
+
+
 
         binding.btnSearch.setOnClickListener {
             val action =
@@ -62,11 +68,6 @@ class GeneralSearchFragment : Fragment() {
                 Navigation.findNavController(it).navigate(action)
             }
         }
-        observeCityData()
-        observeDistrictData()
-        observeHospitalListData()
-        binding.etSelectDistrict.isEnabled = false
-        binding.etSelectHospital.isEnabled = false
 
 
     }
@@ -82,17 +83,7 @@ class GeneralSearchFragment : Fragment() {
                         requireContext(), R.layout.support_simple_spinner_dropdown_item, cityList
                     )
                 )
-                binding.etSelectCity.setOnItemClickListener { _, _, position, _ ->
 
-                    ilId = cities[position].ilId.toString()
-
-                    Toast.makeText(
-                        context,
-                        "Selected item id : $ilId",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-                observeDistrictData()
 
             }
         })
@@ -103,7 +94,7 @@ class GeneralSearchFragment : Fragment() {
             district?.let {
                 for (data in district) {
                     districtList.add(
-                        data.ilceIsim!!
+                        data.ilIsim!!
                     )
                 }
                 binding.etSelectDistrict.setAdapter(

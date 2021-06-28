@@ -16,7 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HastaneTakipSistemi"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.personel.PersonelDeviceSelectionActivity"></activity>
+        <activity android:name=".view.personel.PersonalOtherDevices"></activity>
+        <activity android:name=".view.personel.MedikalDeviceDetail" />
+        <activity android:name=".view.personel.PersonelMedikalDeviceListActivity" />
+        <activity android:name=".view.personel.PersonelDeviceSelectionActivity" />
         <activity android:name=".view.personel.PersonalLoginActivity" />
 
         <meta-data

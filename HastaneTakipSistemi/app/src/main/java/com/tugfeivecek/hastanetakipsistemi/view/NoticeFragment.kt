@@ -47,7 +47,6 @@ class NoticeFragment : Fragment() {
         val u3= Notice("Evde Sağlık Hizmetleri Temel Eğitimleri Başlıyor"," Eğitimler; Kamu Hastaneleri Genel Müdürlüğü Sağlık Hizmetleri Dairesi Başkanlığı tarafından hazırlanmıştır. Sağlık Hizmetleri Genel Müdürlüğü Eğitim ve Sertifikasyon Dairesi Başkanlığı ile ortak çalışmalar yürütülmüş olup, eğitimlere Uzaktan Sağlık Eğitim Sistemi (USES) üzerinden erişim sağlanabilir.","12/04/2021")
 
 
-
         //araylist olusturma
         records = ArrayList<Notice>()
         records.add(u1)
