@@ -25,10 +25,6 @@
 
 
     <item
-        android:id="@+id/navAbout"
-        android:icon="@drawable/drawerinfo"
-        android:title="Hakkında" />
-    <item
         android:id="@+id/navCikis"
         android:icon="@drawable/drawercikis"
         android:title="Çıkış Yap" />

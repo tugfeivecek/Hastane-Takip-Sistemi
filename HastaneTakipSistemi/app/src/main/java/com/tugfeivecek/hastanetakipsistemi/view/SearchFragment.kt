@@ -76,8 +76,6 @@ class SearchFragment : Fragment() {
             items?.let {
                 binding.rvSearch.visibility = View.VISIBLE
                 adapterSearch.updateSearchList(items)
-
-
             }
         })
     }

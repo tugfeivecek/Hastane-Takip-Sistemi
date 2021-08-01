@@ -149,7 +149,6 @@ data class SemptomDetail(
     var capacity: Int?,
     @SerializedName("illness.illId")
     var illness: Int?,
-
     )
 
 data class SemptomDetailResponse(

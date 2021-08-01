@@ -156,12 +156,7 @@ class MainFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
                     Navigation.findNavController(it).navigate(action)
                 }
             }
-            R.id.navAbout -> {
-                val action = MainFragmentDirections.actionMainFragmentToAboutFragment()
-                view?.let {
-                    Navigation.findNavController(it).navigate(action)
-                }
-            }
+
 
             R.id.navMain -> {
                 val action = MainFragmentDirections.actionMainFragmentSelf()
