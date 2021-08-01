@@ -1,0 +1,12 @@
+<TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:fontFamily="@font/ralewaymedium"
+        android:textSize="@dimen/_14ssp"
+       android:padding="@dimen/_12sdp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="-2dp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"/>

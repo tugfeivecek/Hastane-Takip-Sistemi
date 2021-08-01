@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F8FC"
+    tools:context=".view.personel.PersonelDeviceSelectionActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/turkuaz"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/toolbar_home">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/ralewaymedium"
+            android:paddingTop="@dimen/_5sdp"
+            android:text="Hastanem"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_480sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarHome">
+
+
+        <ImageView
+            android:id="@+id/image_rectangle_kurum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="37dp"
+            android:src="@drawable/personelrectangle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/image_rectangle_digerkurum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/personelrectangle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_rectangle_kurum" />
+
+        <TextView
+            android:id="@+id/text_kurum"
+            android:layout_width="@dimen/_160sdp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="80dp"
+            android:fontFamily="@font/ralewayregular"
+            android:gravity="center"
+            android:text="@string/company_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18sdp"
+            app:layout_constraintEnd_toEndOf="@+id/image_rectangle_kurum"
+            app:layout_constraintStart_toStartOf="@+id/image_rectangle_kurum"
+            app:layout_constraintTop_toTopOf="@+id/image_rectangle_kurum" />
+
+        <TextView
+            android:id="@+id/text_digerkurum"
+            android:layout_width="@dimen/_160sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:fontFamily="@font/ralewayregular"
+            android:gravity="center"
+            android:text="@string/other_company_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18sdp"
+
+            app:layout_constraintEnd_toEndOf="@id/image_rectangle_kurum"
+            app:layout_constraintStart_toStartOf="@+id/image_rectangle_digerkurum"
+            app:layout_constraintTop_toTopOf="@+id/image_rectangle_digerkurum" />
+
+        <TextView
+            android:id="@+id/textViewLogout"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_6sdp"
+            android:text="Çıkış Yap"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:background="@drawable/personelrectangle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewActivePersonal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="@dimen/_2sdp"
+            tools:text="TextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
